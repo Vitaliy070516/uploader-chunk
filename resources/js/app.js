@@ -16,7 +16,7 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import AttachmentForm from './components/AttachmentForm.vue';
-app.component('example-component', AttachmentForm);
+app.component('attachment-form', AttachmentForm);
 
 /**
  * The following block of code may be used to automatically register your
