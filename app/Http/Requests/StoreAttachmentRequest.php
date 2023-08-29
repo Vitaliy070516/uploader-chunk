@@ -14,8 +14,7 @@ class StoreAttachmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'attachment' => 'required|max:1024|mimes:pdf,png,jpeg,gif,txt'
+            'attachment' => 'required|max:1024|mimes:pdf,png,jpeg,gif,txt,csv'
         ];
     }
 }
