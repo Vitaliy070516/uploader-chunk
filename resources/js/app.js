@@ -15,8 +15,8 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import AttachmentForm from './components/AttachmentForm.vue';
-app.component('attachment-form', AttachmentForm);
+import UploaderForm from './components/UploaderForm.vue';
+app.component('uploader-form', UploaderForm);
 
 /**
  * The following block of code may be used to automatically register your

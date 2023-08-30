@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('File Uploads') }}</div>
 
                 <div class="card-body">
-                    <attachment-form></attachment-form>
+                    <uploader-form></uploader-form>
                 </div>
             </div>
         </div>

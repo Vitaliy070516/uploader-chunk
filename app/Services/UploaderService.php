@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Services;
 
-use App\Http\Requests\StoreAttachmentRequest;
 use App\Models\CorrectRecord;
 use App\Models\File;
 use App\Models\IncorrectRecord;
+use Illuminate\Http\UploadedFile;
 
-class HomeController extends Controller
+class UploaderService
 {
-    public function index()
-    {
-        return view('home');
-    }
-
-    public function store(StoreAttachmentRequest $request)
+    /**
+     * @param UploadedFile $fileParam
+     * @param string $newFileName
+     * @return array
+     */
+    public function upload(UploadedFile $fileParam, string $newFileName): array
     {
         $file = new File;
-        $file->name = $request->attachment->getClientOriginalName();
-        $file->path = $file->upload($request->attachment);
+        $file->name = basename($fileParam->getClientOriginalName(), '.part');
+        $file->path = "uploads/{$newFileName}";
         $file->save();
 
         $fullPath = storage_path('app/public/' . $file->path);
@@ -64,12 +64,10 @@ class HomeController extends Controller
 
         fclose($fileResource);
 
-        return response()->json([
-            'message' => [
-                'fileName' => $file->name,
-                'correctRecordCount' => $correctRecordCount,
-                'incorrectRecordCount' => $incorrectRecordCount,
-            ]
-        ]);
+        return [
+            'fileName' => $file->name,
+            'correctRecordCount' => $correctRecordCount,
+            'incorrectRecordCount' => $incorrectRecordCount,
+        ];
     }
 }
