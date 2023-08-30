@@ -72,7 +72,7 @@ export default {
     createChunks(chunks) {
       let fileReader = new FileReader();
       fileReader.onload = function(event) {
-        const chunkSize = 100;
+        const chunkSize = 1000;
         const rows = event.target.result.split('\n');
         for (let i = 0; i < rows.length; i += chunkSize) {
           let chunk = rows.slice(i, i + chunkSize);
